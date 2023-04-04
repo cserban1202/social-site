@@ -40,7 +40,7 @@ function CreatePost() {
             name="title" 
             placeholder="Ex: Title..."/>
 
-            <label>Project link to video: </label>
+            <label>Write something... </label>
             <ErrorMessage name="postText" component="span"/>
             <Field 
             autocomplete="off"
