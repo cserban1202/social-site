@@ -2,6 +2,9 @@ import React from 'react';
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Home() {
   let history = useNavigate();
@@ -16,7 +19,7 @@ function Home() {
 
   const likeAPost = (postId) => {
     if (!localStorage.getItem("accessToken")) {
-      alert("Please log in to like a post!");
+      toast.error("Please log in to like a post!");
       return;
     }
 
@@ -47,7 +50,7 @@ function Home() {
 
   return (
     <div>
-
+      <ToastContainer />
       {listOfPosts.map((value, key) => {
         return (
           <div key={key} className="post" >

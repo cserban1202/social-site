@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import './Post.css';
 import { AuthContext } from '../helpers/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function Post() {
@@ -38,7 +41,7 @@ function Post() {
       )
       .then((response) => { // optimistic update => assume that the api request worked: the data was actually sent to the database
         if (response.data.error) {
-          alert(response.data.error);
+          toast.error(response.data.error);
         } else {
           const reviewToAdd = {
             reviewBody: newReview,
@@ -47,6 +50,7 @@ function Post() {
           setReviewList([...reviewList, reviewToAdd]); // add the new review to the list of reviews
           //-> array destructuring: take all the elements from the array and add them to the new array
           setNewReview(""); // clear the input field
+          toast.success("Review added successfully!");
         }
       })
   }
@@ -70,7 +74,9 @@ function Post() {
   }
 
   return (
+
     <div className="postPage">
+      <ToastContainer />
       <div className="post" id="individual">
         <div className="title">{postObject.title}</div>
         <div className="body">{postObject.postText}</div>

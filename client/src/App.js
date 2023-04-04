@@ -16,8 +16,8 @@ function App() {
     id: 0,
     status: false,
   });
- 
-  useEffect(() => { 
+
+  useEffect(() => {
     axios
       .get("http://localhost:3001/auth/auth", {
         headers: {
@@ -26,55 +26,55 @@ function App() {
       })
       .then((response) => {
         if (response.data.error) {
-          setAuthState({ ...authState, status: false});
+          setAuthState({ ...authState, status: false });
         } else {
           setAuthState({
             username: response.data.username,
             id: response.data.id,
             status: true,
-          }); 
+          });
         }
       });
-  }, []); 
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState({username: "", id: 0, status: false});
+    setAuthState({ username: "", id: 0, status: false });
   };
 
   return (
-  <div className='App'>
-    <AuthContext.Provider value={{authState, setAuthState}}>
-    <Router>
-    <div className="navbar">
+    <div className='App'>
+      <AuthContext.Provider value={{ authState, setAuthState }}>
+        <Router>
+          <div className="navbar">
             <div className="links">
               <Link to="/"> Home Page</Link>
               <Link to="/createpost"> Create A Post</Link>
               {!authState.status ? (
-              <>
-                <Link to="/login"> Login</Link>
-                <Link to="/registration"> Registration</Link>
-              </>
-            ): (
-              <button onClick={logout}> Logout</button>
-            )}
+                <>
+                  <Link to="/registration"> Registration</Link>
+                  <Link to="/login"> Login</Link>
+                </>
+              ) : (
+                <button onClick={logout}> Logout</button>
+              )}
             </div>
             <div className="loggedInContainer">
               <h1>{authState.username} </h1>
               {authState.status}
             </div>
-           
+
           </div>
-      <Routes>
-        <Route path= "/" element = {<Home />}/>  
-        <Route path= "/createpost" element = {<CreatePost />}/>  
-        <Route path= "/post/:id" element = {<Post />}/>
-        <Route path= "/registration" element = {<Registration />}/>
-        <Route path= "/login" element = {<Login />}/>
-      </Routes>
-    </Router>
-    </AuthContext.Provider>
-  </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/createpost" element={<CreatePost />} />
+            <Route path="/post/:id" element={<Post />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registration" element={<Registration />} />
+          </Routes>
+        </Router>
+      </AuthContext.Provider>
+    </div>
   )
 }
 
