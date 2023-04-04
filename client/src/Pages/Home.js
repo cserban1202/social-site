@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BsFillHandThumbsUpFill } from "react-icons/bs";
+
 
 
 function Home() {
@@ -57,7 +59,8 @@ function Home() {
             <div className="title">{value.title} </div>
             <div className="body" onClick={() => { history(`/post/${value.id}`) }}> {value.postText} </div>
             <div className="footer "> {value.username}
-              <button onClick={() => { likeAPost(value.id) }}>Like</button>
+              <BsFillHandThumbsUpFill className="paddingLeft" onClick={() => { likeAPost(value.id) }} />
+              {/* <button onClick={() => { likeAPost(value.id) }}>Like</button> */}
               <label>{value.Likes.length} </label>
             </div>
           </div>

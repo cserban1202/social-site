@@ -231,3 +231,6 @@ button {
 .loginContainer input {
   border: 2px solid dodgerblue;
 }
+.paddingLeft{
+  padding-left: 1rem;
+}
