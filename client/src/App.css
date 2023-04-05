@@ -55,9 +55,9 @@ body {
 }
 
 .post {
-  width: 400px;
+  width: 420px;
   height: 300px;
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
@@ -231,6 +231,15 @@ button {
 .loginContainer input {
   border: 2px solid dodgerblue;
 }
-.paddingLeft{
-  padding-left: 1rem;
+.likeBttn {
+  color: rgba(255, 255, 255, 0.8);
+}
+.unlikeBttn {
+  color: white;
+}
+.footer .buttons {
+  flex: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }

@@ -25,7 +25,7 @@ router.delete("/:reviewId", validateToken, async (req, res) => {
   await Reviews.destroy({ 
     where: { 
       id: reviewId 
-    } 
+    }, 
   });  
 
   res.json("Review deleted");
