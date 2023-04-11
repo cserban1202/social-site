@@ -44,5 +44,18 @@ router.get('/auth', validateToken, (req, res) => {
     res.json(req.user); // if the user is logged in, send the user information
 }) 
 
+
+router.get('/basicinfo/:id', async (req, res) => { // get the basic info of the user
+    const id = req.params.id; // grab the id from the request parameters
+
+    const basicInfo = await Users.findByPk(id, { // find the user with the id
+        attributes: {exclude: ['password']}, // exclude the password from the response
+    });
+
+    res.json(basicInfo);
+});
+
+
+
 module.exports = router;
 

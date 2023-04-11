@@ -9,6 +9,7 @@ import { AuthContext } from './helpers/AuthContext';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PageNotFound from './Pages/PageNotFound';
+import Profile from './Pages/Profile';
 
 function App() {
 
@@ -73,6 +74,7 @@ function App() {
             <Route path="/createpost" element={<CreatePost />} />
             <Route path="/post/:id" element={<Post />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/profile/:id" element={<Profile />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
